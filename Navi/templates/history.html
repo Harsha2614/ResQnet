@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Navigation History</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>When</th><th>User</th><th>Safehouse</th>
+      <th>Start</th><th>Dest</th><th>Steps</th><th>Group</th><th>Instructions</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for r in rows %}
+    <tr>
+      <td>{{ r.created_at.strftime("%Y-%m-%d %H:%M:%S") }}</td>
+      <td>{{ r.user_id }}</td>
+      <td>{{ r.safehouse_id }}</td>
+      <td>({{ r.start_x }},{{ r.start_y }})</td>
+      <td>({{ r.dest_x }},{{ r.dest_y }})</td>
+      <td>{{ r.steps }}</td>
+      <td>{{ r.group_size }}</td>
+      <td><small>{{ r.instructions }}</small></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

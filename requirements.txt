@@ -1,0 +1,30 @@
+# ---- Core Flask ----
+flask
+flask-cors
+flask-sqlalchemy
+werkzeug
+
+# ---- Machine Learning / NLP ----
+numpy
+pandas
+torch
+sentence-transformers
+openai-whisper
+
+# ---- Audio Processing ----
+librosa
+soundfile
+pydub
+ffmpeg-python
+
+# ---- Utilities ----
+scipy
+tqdm
+regex
+requests
+
+# ---- Optional (safety for dependencies) ----
+jinja2
+itsdangerous
+click
+markupsafe

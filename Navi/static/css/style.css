@@ -1,0 +1,104 @@
+:root { --cell: 28px; --gap: 2px; --bg:#0f172a; --ink:#e2e8f0; --panel:#111827; }
+
+* { box-sizing: border-box; }
+body { margin:0; font-family: system-ui, Arial, sans-serif; background: var(--bg); color: var(--ink); }
+
+.topbar { display:flex; gap:16px; padding:12px 16px; border-bottom:1px solid #1f2937; align-items:center; }
+.topbar .brand { font-weight:700; }
+.topbar nav a { color:#cbd5e1; margin-right:12px; text-decoration:none; }
+
+.container { padding:16px; }
+.row { display:grid; grid-template-columns: 1fr 320px; gap:16px; }
+
+.grid {
+  display:grid;
+  gap: var(--gap);
+  background:#0b1220;
+  padding: var(--gap);
+  width:max-content;
+  border:1px solid #1f2937;
+  border-radius:10px;
+  box-shadow:0 10px 20px rgba(0,0,0,.35);
+}
+
+.cell {
+  width:var(--cell);
+  height:var(--cell);
+  background:#0e1627;
+  border-radius:6px;
+  cursor:pointer;
+  position:relative;
+}
+
+.cell:hover { outline:1px solid #334155; }
+
+/* ===== Map cells ===== */
+.cell.hazard    { background:#7f1d1d !important; border:2px solid #450a0a; }
+
+/* High-contrast POIs with very distinct hues from hazard */
+.cell.safehouse { background:#16a34a !important; border:2px solid #065f46; }
+.cell.school    { background:#2563eb !important; border:2px solid #1e40af; }
+.cell.shop      { background:#f59e0b !important; border:2px solid #b45309; }
+.cell.temple    { background:#a855f7 !important; border:2px solid #6b21a8; }
+.cell.house     { background:#e11d48 !important; border:2px solid #9f1239; } /* ROSE (not red like hazard) */
+.cell.park      { background:#10b981 !important; border:2px solid #065f46; }
+
+/* Start/Goal/Path emphasis */
+.cell.start { outline:3px solid #eab308 !important; box-shadow: 0 0 0 2px #0b1220 inset; }
+.cell.goal  { outline:3px solid #22c55e !important; box-shadow: 0 0 0 2px #0b1220 inset; }
+.cell.path  { background:#94a3b8 !important; opacity: 0.9; }
+
+/* Visible inline tag (explicit element) */
+.cell .tag{
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  font-weight:800; font-size:12px; letter-spacing:.2px;
+  color:#0b1220; text-shadow:0 1px 0 rgba(255,255,255,0.25);
+  pointer-events:none;
+}
+
+/* ===== Legend ===== */
+.legend { display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:10px; }
+.dot { width:14px; height:14px; border-radius:3px; display:inline-block; border:1px solid #475569; }
+.dot.safe   { background:#16a34a; border-color:#065f46; }
+.dot.hazard { background:#7f1d1d; border-color:#450a0a; }
+.dot.school { background:#2563eb; border-color:#1e40af; }
+.dot.shop   { background:#f59e0b; border-color:#b45309; }
+.dot.park   { background:#10b981; border-color:#065f46; }
+.dot.temple { background:#a855f7; border-color:#6b21a8; }
+.dot.house  { background:#e11d48; border-color:#9f1239; }
+.dot.start  { border:2px solid #eab308; background:transparent }
+.dot.goal   { border:2px solid #22c55e; background:transparent }
+.dot.path   { background:#94a3b8 }
+
+/* ===== Right pane, forms, tables ===== */
+aside { border-left:1px solid #1f2937; padding-left:16px; }
+.controls { margin-top:10px; display:flex; gap:10px; align-items:center; }
+
+button { background:#1f2937; color:#e5e7eb; border:1px solid #374151; padding:8px 12px; border-radius:8px; cursor:pointer; }
+button:disabled { opacity:.5; cursor:not-allowed; }
+
+.card { background:#0b1220; padding:16px; border:1px solid #1f2937; border-radius:10px; max-width:560px; }
+.grid2 { display:grid; grid-template-columns: 1fr 1fr; gap:16px; }
+
+label { display:block; margin:8px 0; }
+input { padding:8px; border-radius:8px; border:1px solid #334155; background:#0e1627; color:#e2e8f0; }
+
+.table { width:100%; border-collapse:collapse; }
+.table th, .table td { border-bottom:1px solid #1f2937; padding:8px; text-align:left; }
+
+.alert { background:#7f1d1d; padding:8px; border-radius:6px; }
+.ok    { background:#064e3b; padding:8px; border-radius:6px; }
+
+.directions {
+  white-space:pre-wrap;
+  background:#0b1220;
+  border:1px solid #1f2937;
+  padding:8px;
+  border-radius:8px;
+  min-height:64px;
+}
+
+/* Small count list */
+.counts { list-style:none; margin:0; padding:0; font-size:14px; }
+.counts li { display:flex; justify-content:space-between; padding:2px 0; color:#cbd5e1; }

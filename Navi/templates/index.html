@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row">
+  <div>
+    <div class="legend">
+      <span class="dot safe"></span> Safehouse
+      <span class="dot hazard"></span> Hazard
+      <span class="dot school"></span> School
+      <span class="dot shop"></span> Shop
+      <span class="dot park"></span> Park
+      <span class="dot temple"></span> Temple
+      <span class="dot house"></span> House
+      <span class="dot start"></span> Start
+      <span class="dot goal"></span> Destination (auto: nearest safehouse)
+      <span class="dot path"></span> Path
+    </div>
+
+    <div id="grid"
+         class="grid"
+         data-w="{{ width }}"
+         data-h="{{ height }}">
+    </div>
+
+    <div class="controls">
+      <label>Group size
+        <input id="groupSize" type="number" min="1" value="1">
+      </label>
+      <button type="button" id="btn-reset">Reset</button>
+      <button type="button" id="btn-arrive">Check-in</button>
+      <button type="button" id="btn-checkout">Checkout</button>
+    </div>
+  </div>
+
+  <aside>
+    <h3>Info</h3>
+    <p>Grid: {{ width }} × {{ height }}<br>
+       Click a cell to set <b>Start</b>. I’ll auto-route you to the nearest safehouse with capacity.</p>
+
+    <h4>Safehouses</h4>
+    <ul id="safeList"></ul>
+
+    <h4>Directions</h4>
+    <pre id="directions" class="directions"></pre>
+
+    <h4>Map Data</h4>
+    <ul class="counts">
+      <li><span>Houses</span><b id="cnt-houses">0</b></li>
+      <li><span>Shops</span><b id="cnt-shops">0</b></li>
+      <li><span>Temples</span><b id="cnt-temples">0</b></li>
+      <li><span>Schools</span><b id="cnt-schools">0</b></li>
+      <li><span>Parks</span><b id="cnt-parks">0</b></li>
+    </ul>
+
+    <div id="status" style="margin-top:10px;"></div>
+  </aside>
+</div>
+
+<script>
+  window.__DATA__ = {
+    hazards: {{ hazards | tojson }},
+    safehouses: {{ safehouses | tojson }},
+    pois: {{ pois | tojson }},
+    username: "{{ username }}"
+  };
+</script>
+<script src="{{ url_for('static', filename='js/user.js') }}"></script>
+{% endblock %}

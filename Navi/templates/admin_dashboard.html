@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<!-- ✅ Fixed Logout Bar -->
+<style>
+  .logout-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #0d47a1;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 999;
+  }
+
+  .logout-bar a {
+    margin-left: 20px;
+    background: #d32f2f;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+
+  .logout-bar a:hover {
+    background: #b71c1c;
+  }
+
+  /* push main content below the fixed bar */
+  .content-wrapper {
+    margin-top: 80px;
+  }
+</style>
+
+<div class="logout-bar">
+  <h2>🧭 Admin Dashboard</h2>
+  <div>
+    <span>👤 {{ username }}</span>
+    <a href="/auth/logout">🚪 Logout</a>
+  </div>
+</div>
+
+<div class="content-wrapper">
+  <div class="row">
+    <div>
+      <div class="legend">
+        <span class="dot hazard"></span> Hazard
+        <span class="dot safe"></span> Safehouse
+      </div>
+
+      <div id="adminGrid" class="grid" data-w="{{ width }}" data-h="{{ height }}"></div>
+      <small>Click a cell to toggle a hazard.</small>
+    </div>
+
+    <aside>
+      <h3>Safehouses</h3>
+      <ul id="shList"><!-- filled by server-rendered list for controls --></ul>
+
+      <h3>Active Hazards</h3>
+      <ul id="hzList"></ul>
+    </aside>
+  </div>
+</div>
+
+<!-- Bootstrap data: already serialized JSON strings -->
+<script>
+  window.__ADMIN__ = {
+    hazards: {{ hazards_json | safe }},
+    safehouses: {{ safehouses_json | safe }},
+    pois: {{ pois_json | safe }}
+  };
+
+  // Build the safehouse control list dynamically
+  (function renderServerSideList(){
+    const ul = document.getElementById('shList');
+    ul.innerHTML = '';
+    for (const s of window.__ADMIN__.safehouses) {
+      const li = document.createElement('li');
+      li.dataset.id = s.id;
+      li.innerHTML = `
+        <b>${s.name}</b> @ (${s.x},${s.y}) — Capacity:
+        <input type="number" class="cap" value="${s.capacity}" min="0" style="width:80px;">
+        Occupied: <span class="occ">${s.occupied}</span>
+        Available: <span class="avail">${s.available}</span>
+        <button class="setCap">Set</button>
+        <button class="resetSh">Reset</button>
+      `;
+      ul.appendChild(li);
+    }
+  })();
+</script>
+
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+{% endblock %}
