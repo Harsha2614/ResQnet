@@ -9,7 +9,7 @@ from chatbot.app_backend import app as chatbot_app
 from FakeNews.app import app as fake_app
 import session_config
 
-'''
+
 # ---------------- Launch Chatbot Backend ----------------
 def launch_chatbot_backend():
     print("🚀 Launching Chatbot backend on port 5000...")
@@ -24,7 +24,7 @@ def launch_fakenews_backend():
     process = subprocess.Popen(["python", "-m", "FakeNews.app"])
     time.sleep(3)
     return process
-'''
+
 
 # ---------------- Main Flask App ----------------
 landing_app = Flask(__name__)
@@ -369,5 +369,15 @@ application = DispatcherMiddleware(
 
 # ---------------- Run Combined App ----------------
 if __name__ == "__main__":
-    run_simple("0.0.0.0", 8000, application, use_debugger=True, use_reloader=False)
-    
+    chatbot_proc = launch_chatbot_backend()
+    fakenews_proc = launch_fakenews_backend()
+    try:
+        print("🌍 Combined Flask Application running on http://127.0.0.1:8000")
+        run_simple("127.0.0.1", 8000, application, use_debugger=True, use_reloader=False)
+    except KeyboardInterrupt:
+        print("\n🛑 Shutting down backends...")
+        chatbot_proc.terminate()
+        fakenews_proc.terminate()
+        chatbot_proc.wait()
+        fakenews_proc.wait()
+        print("✅ All services stopped cleanly.")
