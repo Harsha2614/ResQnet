@@ -108,7 +108,7 @@ def home():
             z-index: 2;
         }}
 
-        h1 {{
+        h1,h4 {{
             font-size: 2.2em;
             color: #f1f5f9;
             margin-top: 40px;
@@ -288,7 +288,8 @@ def home():
     </style>
 </head>
 <body>
-    <h1>🌐 A Multi-Module Disaster Management Application integrating Navigation, Fake News Detection, and Multilingual Chatbot</h1>
+<h1>ResQnet<h1>
+    <h4>🌐 A Multi-Module Disaster Management Application integrating Navigation, Fake News Detection, and Multilingual Chatbot</h4>
 
    
     """

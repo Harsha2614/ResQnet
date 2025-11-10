@@ -28,3 +28,17 @@ jinja2
 itsdangerous
 click
 markupsafe
+
+Flask
+Flask-Cors
+gunicorn
+SQLAlchemy
+Werkzeug
+sentence-transformers
+whisper
+pydub
+librosa
+soundfile
+numpy
+pandas
+
