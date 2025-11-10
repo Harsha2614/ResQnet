@@ -178,10 +178,12 @@ Gunicorn: Runs the app in production on Render.
 | **Flask-CORS**           | Adds CORS headers for cross-domain JS communication.                    |
 ------------------------------------------------------------------------------------------------------
 
-#  👨‍💻 Developed By
+# 👨‍💻 Developed By
 
 Narayana Harsha Vardhan (chatbot and Integration)  
+
 Malapati Saketh Reddy (navigator)
+
 Alla Sai Vinay (Fake news detector)
 
 🎓 B.Tech Computer Science and Engineering
