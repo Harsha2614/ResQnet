@@ -6,11 +6,6 @@ Developed using **Flask**, **Python**, and **Machine Learning**, it enables user
 
 ---
 
-## 🚀 Live Demo
-🔗 [https://resqnet.onrender.com](https://resqnet.onrender.com) *(will work once deployed to Render)*
-
----
-
 ## 🌟 Key Features
 
 ### 🧭 1. Navigation & Safehouse System
@@ -91,19 +86,6 @@ python combined.py
 
 Then open your browser at:
 👉 http://127.0.0.1:8000
-
-# ☁️ Render Deployment Configuration
----------------------------------------------------------
-| Field             | Value                             |
-| ----------------- | --------------------------------- |
-| **Service Type**  | Web Service                       |
-| **Language**      | Python 3                          |
-| **Branch**        | main                              |
-| **Build Command** | `pip install -r requirements.txt` |
-| **Start Command** | `gunicorn main:application`       |
-| **Instance Type** | Free (512 MB / 0.1 CPU)           |
-| **Region**        | Oregon (US West)                  |
----------------------------------------------------------
 
 # 🧾 Folder Structure
 
