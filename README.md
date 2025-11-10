@@ -34,7 +34,6 @@ Developed using **Flask**, **Python**, and **Machine Learning**, it enables user
 - Passwords secured using **Werkzeug hashing**.
 - Session-based login persistence with global cookie management.
 
----
 
 ## 🧩 Application Architecture
             ┌────────────────────────────┐
@@ -42,12 +41,13 @@ Developed using **Flask**, **Python**, and **Machine Learning**, it enables user
             │ (Main DispatcherMiddleware)│
             └─────────────┬──────────────┘
                           │
- ┌────────────────┬────────────────────┬──────────────────┐
- │                │                    │                  │
-┌────────┐  ┌─────────────┐      ┌─────────────┐       ┌────────────┐
-│ auth   │  │ Navi System │      │   Fake News │       │ Chatbot    │
-│ (Login)│  │ (Safehouses)│      │ Detection   │       │ Assistant  │
-└────────┘  └─────────────┘      └─────────────┘       └────────────┘
+            
+     ┌────────────────┬────────────────────┬──────────────────┐
+     │                │                    │                  │
+    ┌────────┐  ┌─────────────┐      ┌─────────────┐       ┌────────────┐
+    │ auth   │  │ Navi System │      │   Fake News │       │ Chatbot    │
+    │ (Login)│  │ (Safehouses)│      │ Detection   │       │ Assistant  │
+    └────────┘  └─────────────┘      └─────────────┘       └────────────┘
 
 
 
@@ -63,7 +63,7 @@ application = DispatcherMiddleware(
     },
 )
 ```
-## 🧠 Tech Stack
+# 🧠 Tech Stack
 
 ----------------------------------------------------------------------------------------------------------------------
 | Layer          | Technology                                                                                        |
@@ -167,7 +167,7 @@ Gunicorn: Runs the app in production on Render.
 | `style.css`                 | Modern responsive UI design with gradient animations.          |
 ------------------------------------------------------------------------------------------------
 # 🧩 Important Terms
-=-----------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
 | Term                     | Definition                                                              |
 | ------------------------ | ----------------------------------------------------------------------- |
 | **CORS**                 | Cross-Origin Resource Sharing – allows frontend to access backend APIs. |
@@ -176,9 +176,9 @@ Gunicorn: Runs the app in production on Render.
 | **Werkzeug**             | Flask’s core utility library for security, routing, and WSGI handling.  |
 | **SQLAlchemy**           | ORM layer that connects Python objects to database tables.              |
 | **Flask-CORS**           | Adds CORS headers for cross-domain JS communication.                    |
------------------------------------------------------------------------------------------------------=
+------------------------------------------------------------------------------------------------------
 
-# 👨‍💻 Developed By
+#  👨‍💻 Developed By
 
 Narayana Harsha Vardhan (chatbot and Integration)  
 Malapati Saketh Reddy (navigator)
@@ -187,7 +187,7 @@ Alla Sai Vinay (Fake news detector)
 🎓 B.Tech Computer Science and Engineering
 📍 VIT-AP University
 
-#💡 Future Enhancements
+# 💡 Future Enhancements
 
 Add real-time weather and flood alert API.
 
@@ -196,12 +196,3 @@ SMS alert system for registered users.
 Interactive 3D safehouse mapping.
 
 Integration with IoT-based sensors.
-
-
-
-
-
-
-
-
-
